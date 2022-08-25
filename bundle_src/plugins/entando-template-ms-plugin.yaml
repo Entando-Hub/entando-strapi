@@ -1,6 +1,6 @@
-image: kamleshbobde/strapi-test16:1.0.0
+image: entandonv/strapi-bundle:1.0.0
 dbms: postgresql
-ingressPath: "/entando-template-node-api"
+ingressPath: "/entando-strapi-api"
 healthCheckPath: "/api/actuator/health"
 roles:
   - "et-first-role"
