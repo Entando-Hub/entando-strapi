@@ -5,5 +5,5 @@ module.exports = ({ env }) => ({
   apiToken: {
     salt: env('API_TOKEN_SALT'),
   },
-  // url: process.env.SERVER_SERVLET_CONTEXT_PATH + "/admin",
+  url: process.env.SERVER_SERVLET_CONTEXT_PATH + "/admin",
 });

@@ -3,7 +3,7 @@ module.exports = {
   routes: [
     {
       method: "GET",
-      path: process.env.SERVER_SERVLET_CONTEXT_PATH + "/actuator/health",
+      path: "/actuator/health",
       handler: "health-check.health",
       config: {
         auth: false,

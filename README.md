@@ -1,3 +1,32 @@
+## 📚 Steps to setup this customized strapi project on local
+- Clone this project
+```
+git clone https://github.com/Entando-Hub/entando-strapi.git
+```
+- Install the dependencies
+```
+~/entando-strapi/src/main/node$ npm install
+```
+- Go to ~/entando-strapi/src/main/node/src and rename admin folder to admin_
+
+- Build the project
+```
+~/entando-strapi/src/main/node$ npm run build
+```
+- Go to ~/entando-strapi/src/main/node/src and rename admin_ folder to admin
+- Go to ~/entando-strapi/src/main/node/src/admin and install the dependencies
+```
+~/entando-strapi/src/main/node/src/admin$ npm install
+```
+- Go to ~/entando-strapi/src/main/node/node_modules/@strapi/strapi/lib/core/loaders/admin.js and comment this line: node_modules/@strapi/strapi/lib/core/loaders/admin.js
+```
+ // strapi.admin = require('@strapi/admin/strapi-server'); //Comment this line
+  strapi.admin = require('../../../../../../src/admin/strapi-server'); //Add this line
+```
+- Run the project
+```
+~entando-customized-strapi$ npm run develop
+```
 # Deployment and installation
 With this configuration, you can use the ent cli (https://dev.entando.org/next/docs/reference/entando-cli.html) to perform the full deployment sequence:
 
@@ -14,8 +43,8 @@ With this configuration, you can use the ent cli (https://dev.entando.org/next/d
 ### Publish the bundle.
 1. Build FE: ent prj fe-build -a
 2. Build and publish BE: ./prepareDockerImage.sh
-3. Publish FE: `ent prj fe-push` , no need to use this command
-    `ent prj pbs-publish` need to use this command
+3. Publish FE: `ent prj fe-push` (Not using this command),  
+    `ent prj pbs-publish` (using this command)
 4. Deploy (after connecting to k8s above): `ent prj deploy`
 5. Install the bundle via 1) App Builder, 2) `ent prj install`, or 3) `ent prj install --conflict-strategy=OVERRIDE` on subsequent installs.
 6. Iterate steps 1-4 to publish new versions.
