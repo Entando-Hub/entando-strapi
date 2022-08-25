@@ -1,0 +1,59 @@
+{
+  "realm" : "entando",
+  "users" : [ {
+    "id" : "af32f4ab-0ee4-4cbb-bfef-4a7fdc0f52d4",
+    "createdTimestamp" : 1636652043300,
+    "username" : "et-first-role",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "Szld5PGy6rUOHCceH4QwGz53bcjA0MmFf5cMQ4hzlfmrLJwXP+A9QpirGOGDRYzgAMCjdhu/BP4Hzhp49zaa3Q==",
+      "salt" : "VrJWwcdM2p4r+K9e408ZQA==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1636652052226,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "internal" : [ "et-first-role" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "1d05eaa8-810e-40eb-a01e-1172044bcc0d",
+    "createdTimestamp" : 1636647952757,
+    "username" : "test-user",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "NllR3v71Dd4zzqiuf5ZLI1H9ytW2NMYKKsLMo0WfRyqHhqFjIBTRnS7WB3T8PXRjyy5MqsWexTWBKwtDoEOl7g==",
+      "salt" : "4GAUMoRurJx9ujCDc37kBg==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1636647962421,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}
