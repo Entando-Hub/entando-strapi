@@ -25,7 +25,7 @@ git clone https://github.com/Entando-Hub/entando-strapi.git
 ```
 - Run the project
 ```
-~entando-customized-strapi$ npm run develop
+~/entando-strapi/src/main/node$ npm run develop
 ```
 # Deployment and installation
 With this configuration, you can use the ent cli (https://dev.entando.org/next/docs/reference/entando-cli.html) to perform the full deployment sequence:
