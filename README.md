@@ -41,7 +41,7 @@ With this configuration, you can use the ent cli (https://dev.entando.org/next/d
 4. Attach to kubernetes for an Entando application via ent attach-kubeconfig config-file or similar
 
 ### Publish the bundle.
-1. Build FE: ent prj fe-build -a
+1. Build FE: ent prj fe-build -a (Not using this command)
 2. Build and publish BE: ./prepareDockerImage.sh
 3. Publish FE: `ent prj fe-push` (Not using this command),  
     `ent prj pbs-publish` (using this command)

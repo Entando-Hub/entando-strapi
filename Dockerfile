@@ -13,6 +13,6 @@ COPY $SOURCE_ROOT .
 ENV NODE_ENV production
 
 # RUN npm run build
-EXPOSE 1337
+EXPOSE 8081
 
 CMD ["npm", "run", "develop"]
