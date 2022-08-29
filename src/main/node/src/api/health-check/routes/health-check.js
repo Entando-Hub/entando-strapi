@@ -3,7 +3,7 @@ module.exports = {
   routes: [
     {
       method: "GET",
-      path: "/actuator/health",
+      path: "/health",
       handler: "health-check.health",
       config: {
         auth: false,

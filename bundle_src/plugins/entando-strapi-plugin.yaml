@@ -1,0 +1,7 @@
+image: entando/entando-strapi:4.0.0
+dbms: postgresql
+ingressPath: "/entando-strapi-api"
+deploymentBaseName: "entando-strapi"
+healthCheckPath: "/api/health"
+roles:
+  - "admin"

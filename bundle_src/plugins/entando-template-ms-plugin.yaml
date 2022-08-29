@@ -1,7 +1,0 @@
-image: entando/entando-strapi:2.0.0
-dbms: postgresql
-ingressPath: "/entando-strapi-api"
-healthCheckPath: "/api/actuator/health"
-roles:
-  - "et-first-role"
-  - "et-second-role"
