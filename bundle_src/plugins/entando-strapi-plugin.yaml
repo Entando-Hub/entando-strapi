@@ -1,4 +1,4 @@
-image: entando/entando-strapi:5.0.0
+image: entando/entando-strapi:6.0.0
 dbms: postgresql
 ingressPath: "/entando-strapi-api"
 deploymentBaseName: "entando-strapi"
