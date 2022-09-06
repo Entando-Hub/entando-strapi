@@ -17,8 +17,6 @@ RUN chmod +x /entando-code/strapi-code/strapi.sh
  
 ENV NODE_ENV=production
 
-ENV BASE_URL=http://quickstart.192.168.43.3.nip.io
-
 EXPOSE 8081
 CMD ["/entando-code/strapi-code/strapi.sh"]
 
