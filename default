@@ -1,11 +1,10 @@
 server {
     # Listen HTTP
     listen 8081;
-    
     # Strapi API and Admin
-    location /entando-strapi-api {
-        rewrite ^/entando-strapi-api?(.*)$ /$1 break;
-        proxy_pass http://127.0.0.1:1337;
+    location SERVER_CONTEXT_PATH/ {
+        rewrite ^SERVER_CONTEXT_PATH/?(.*)$ /$1 break;
+        proxy_pass http://0.0.0.0:1337;
         proxy_http_version 1.1;
         proxy_set_header X-Forwarded-Host $host;
         proxy_set_header X-Forwarded-Server $host;
@@ -17,10 +16,10 @@ server {
         proxy_set_header Connection "Upgrade";
         proxy_pass_request_headers on;
     }
- 
-    location /entando-strapi-api/api/health {
-        access_log off;
-        add_header 'Content-Type' 'application/json';
-        return 200 '{"status":"UP"}';
-    }
+
+#   location SERVER_CONTEXT_PATH/api/health {
+#       access_log off;
+#       add_header 'Content-Type' 'application/json';
+#       return 200 '{"status":"UP","groups": ["liveness", "readiness"]}';
+#  }
 }
