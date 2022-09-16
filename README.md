@@ -47,6 +47,6 @@ You can use the following commands from the application folder to run the local 
 * `cd src/main/node/` and `npm run develop`  - to run the strapi project
 
 ## Notes
-* Access Strapi APIs through Entando Keycloak token:
+* Access Strapi APIs(The APIs accessbile to Admin) through Entando Keycloak token:
     `Authorization: EntKcToken <entando-keycloak-token>`
 * Need to add the same username on strapi(with Super Admin role) which is present on AppBuilder.
