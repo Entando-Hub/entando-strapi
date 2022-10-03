@@ -50,3 +50,5 @@ You can use the following commands from the application folder to run the local 
 * Access Strapi APIs(The APIs accessbile to Admin) through Entando Keycloak token:
     `Authorization: EntKcToken <entando-keycloak-token>`
 * Need to add the same username on strapi(with Super Admin role) which is present on AppBuilder.
+* Admin user is automatically initialized with email strapi@entando.local and password adminadmin
+
