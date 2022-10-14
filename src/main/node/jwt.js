@@ -9,6 +9,8 @@
 const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 
+const ENT_KC_TOKEN = 'entkctoken'
+
 // For Keycloak token
 const Keycloak = require("keycloak-verify").default;
 require("regenerator-runtime");
@@ -22,7 +24,7 @@ module.exports = ({ strapi }) => ({
     if (ctx.request && ctx.request.header && ctx.request.header.authorization) {
       parts = ctx.request.header.authorization.split(/\s+/);
 
-      if ((parts[0].toLowerCase() !== 'bearer' && parts[0].toLowerCase() !== 'entkctoken') || parts.length !== 2) {
+      if ((parts[0].toLowerCase() !== 'bearer' && parts[0].toLowerCase() !== ENT_KC_TOKEN) || parts.length !== 2) {
         return null;
       }
 
@@ -31,7 +33,7 @@ module.exports = ({ strapi }) => ({
       return null;
     }
 
-    if (parts[0].toLowerCase() === 'entkctoken') {
+    if (parts[0].toLowerCase() === ENT_KC_TOKEN) {
       return this.verifyKcToken(token);
     } else {
       return this.verify(token);
