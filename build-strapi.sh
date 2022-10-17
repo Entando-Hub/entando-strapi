@@ -9,4 +9,6 @@ cp src/admin/server/services/token.js "node_modules/@strapi/admin/server/service
 
 rm -Rf src/admin
 
+cp jwt.js "node_modules/@strapi/plugin-users-permissions/server/services/jwt.js"
+
 npm run build
