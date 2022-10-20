@@ -59,53 +59,33 @@ const decodeJwtToken = token => {
  * @param {*} token 
  * @returns 
  */
-// const decodeJwtKCToken_ = token => {
-//   const kcConfigObj = { realm: 'entando', authServerUrl: 'http://20.79.198.96.nip.io' };
-//   const keycloak = Keycloak(kcConfigObj);
-//   return keycloak.verifyOnline(token);
-// };
-
 // Decode token and verify it
 const decodeJwtKCToken = token => {
 
-  const kcConfigObj = {
+  let authServerUrl = process.env.KEYCLOAK_AUTH_URL;
+  if (!authServerUrl) {
+    throw new Error('Keycloak URL not configured');
+  }
+  // Removing the context path from the URL
+  authServerUrl = authServerUrl.substring(0, authServerUrl.lastIndexOf('/'));
+
+  const kcConfig = {
     realm: '',
-    authServerUrl: ''
+    authServerUrl
   }
 
   var decoded = jwt_decode(token);
-  console.log('decoded: ', decoded);
   if (decoded) {
     const iss = decoded.iss;
-    console.log('iss: ', iss);
     if (iss) {
       const splitUrl = iss.split('/');
       const realm = splitUrl[splitUrl.length - 1];
-
-      let index = findNthOccur(iss, '/', 3);
-      let url = iss.substr(0, index);
-
-      kcConfigObj.realm = realm;
-      kcConfigObj.authServerUrl = url;
+      kcConfig.realm = realm;
     }
   }
-  const config = { realm: kcConfigObj.realm, authServerUrl: kcConfigObj.authServerUrl };
-  const keycloak = Keycloak(config);
+  const keycloak = Keycloak(kcConfig);
   return keycloak.verifyOnline(token);
 };
-
-const findNthOccur = (str, ch, N) => {
-  var occur = 0;
-  // Loop to find the Nth occurrence of the character
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] == ch) {
-      occur += 1;
-    }
-    if (occur == N)
-      return i;
-  }
-  return -1;
-}
 
 /**
  * @returns {void}
@@ -125,6 +105,5 @@ module.exports = {
   getTokenOptions,
   decodeJwtToken,
   decodeJwtKCToken,
-  findNthOccur,
   checkSecretIsDefined,
 };
