@@ -61,28 +61,14 @@ const decodeJwtToken = token => {
  */
 // Decode token and verify it
 const decodeJwtKCToken = token => {
-
-  let authServerUrl = process.env.KEYCLOAK_AUTH_URL;
-  if (!authServerUrl) {
-    throw new Error('Keycloak URL not configured');
-  }
-  // Removing the context path from the URL
-  authServerUrl = authServerUrl.substring(0, authServerUrl.lastIndexOf('/'));
+  const authServerUrl = strapi.config.get('entando.auth.server.url');
+  const realm = strapi.config.get('entando.auth.realm');
 
   const kcConfig = {
-    realm: '',
+    realm,
     authServerUrl
   }
 
-  var decoded = jwt_decode(token);
-  if (decoded) {
-    const iss = decoded.iss;
-    if (iss) {
-      const splitUrl = iss.split('/');
-      const realm = splitUrl[splitUrl.length - 1];
-      kcConfig.realm = realm;
-    }
-  }
   const keycloak = Keycloak(kcConfig);
   return keycloak.verifyOnline(token);
 };
