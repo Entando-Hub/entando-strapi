@@ -77,40 +77,14 @@ module.exports = ({ strapi }) => ({
 });
 
 const decodeJwtKCToken = token => {
+  const authServerUrl = strapi.config.get('entando.auth.server.url');
+  const realm = strapi.config.get('entando.auth.realm');
 
-  const kcConfigObj = {
-    realm: '',
-    authServerUrl: ''
+  const kcConfig = {
+    realm,
+    authServerUrl
   }
 
-  var decoded = jwt_decode(token);
-  if (decoded) {
-    const iss = decoded.iss;
-    if (iss) {
-      const splitUrl = iss.split('/');
-      const realm = splitUrl[splitUrl.length - 1];
-
-      let index = findNthOccur(iss, '/', 3);
-      let url = iss.substr(0, index);
-
-      kcConfigObj.realm = realm;
-      kcConfigObj.authServerUrl = url;
-    }
-  }
-  const config = { realm: kcConfigObj.realm, authServerUrl: kcConfigObj.authServerUrl };
-  const keycloak = Keycloak(config);
+  const keycloak = Keycloak(kcConfig);
   return keycloak.verifyOnline(token);
 };
-
-const findNthOccur = (str, ch, N) => {
-  var occur = 0;
-  // Loop to find the Nth occurrence of the character
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] == ch) {
-      occur += 1;
-    }
-    if (occur == N)
-      return i;
-  }
-  return -1;
-}
